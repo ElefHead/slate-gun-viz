@@ -11,7 +11,6 @@ var margin = {
 let cityCountsData = null;
 let cityVictimsData = null;
 let stateCountsData = null;
-let victims = null;
 let isLoaded = false;
 
 var color = d3.scaleSqrt()
@@ -40,9 +39,9 @@ const svg = d3.select('.viz').append('svg')
         return reset();
     });
 
-Promise.all([d3.json('data/us-states.topojson'), d3.json('data/stateCounts.json'), d3.json('data/cityCounts.json'), d3.json('data/cityVictims.json'), d3.json('data/victimsList.json')])
-    .then(([data, stateCounts, cityCounts, cityVictims, victimsList]) => {
-        ready(data, stateCounts, cityCounts, cityVictims, victimsList)
+Promise.all([d3.json('data/us-states.topojson'), d3.json('data/stateCounts.json'), d3.json('data/cityCounts.json'), d3.json('data/cityVictims.json')])
+    .then(([data, stateCounts, cityCounts, cityVictims]) => {
+        ready(data, stateCounts, cityCounts, cityVictims)
     });
 
 const projection = d3.geoAlbersUsa()
@@ -78,13 +77,10 @@ const scale = d3.scaleLinear()
     .domain([0, numPerRow - 1])
     .range([0, size * numPerRow - 5]);
 
-function ready(data, stateCounts, cityCounts, cityVictims, victimsList) {
+function ready(data, stateCounts, cityCounts, cityVictims) {
     cityCountsData = cityCounts;
     cityVictimsData = cityVictims;
     stateCountsData = stateCounts;
-    victims = d3.keys(victimsList).map((key) => {
-        return [key, victimsList[key]]
-    });
 
     let usStates = topojson.feature(data, data.objects.collection).features;
 
@@ -138,7 +134,6 @@ function ready(data, stateCounts, cityCounts, cityVictims, victimsList) {
             $('#tooltip-container').hide();
         })
         .on('click', clicked);
-    // populateGrid(victims, true)
 }
 
 
