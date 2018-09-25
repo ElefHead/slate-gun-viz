@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Gudea|Palanquin');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: auto;
+}
+
+
+.center-container {
+    margin: 0 auto;
+    align-self: center;
+}
+
+.margin-left {
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.center-items {
+    display: flex;
+    justify-content: center;
+}
+
+.margin-top {
+    margin-top: 10%;
+}
+
+.darkblue {
+    color: darkblue;
+}
+
+.pink {
+    color: pink;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: dodgerblue;
+}
+
+.grey {
+    color: gray;
+}
+
+.footer {
+    height: 100px;
+}
+
+.font_0{
+    font: Normal Normal Normal 50px/1.4em Palanquin, sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.font_5 {
+    font: 25px Gudea, sans-serif ;
+    font-weight: normal;
+    line-height: 1.8em;
+}
+
+.font_4 {
+    font: 23px Gudea, sans-serif;
+}
+
+.label-div {
+    margin-left: 10px;
+}
+
+.blur {
+    fill: #fcfcfc;
+}
+.us-state {
+    stroke: white;
+    stroke-width: 0.5px;
+    transition: transform .2s;
+    fill-opacity: 0.8;
+}
+
+.us-state:hover {
+    stroke: black;
+    fill-opacity: 1;
+}
+
+.active{
+    stroke-width: 0.4;
+    fill: #efefef;
+    fill-opacity: 1;
+    stroke: transparent;
+}
+
+.active:hover {
+    stroke: transparent;
+}
+
+
+rect {
+    fill: transparent;
+}
+
+.bubble {
+    stroke-width: 1.5px;
+}
+
+circle:hover {
+    stroke: red;
+    stroke-width: 0.4px;
+    cursor: pointer;
+}
+
+#tooltip-container {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid;
+    display: none;
+    z-index: 100;
+}
+
+#gridtip-container {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid;
+    z-index: 100;
+    display: none;
+}
+
+.tooltip_key {
+    font-weight: bold;
+}
+
+.tooltip_value {
+    margin-left: 20px;
+    float: right;
+}
+
+.grid {
+    overflow: visible;
+}
+
+.grid-g {
+    overflow: visible;
+}
+
+span.subtext {
+    font-size: 15px;
+}
+
+@media(max-width:967px) {
+    .close-center {
+        width: 90%;
+    }
+    .font_0 {
+        font: Normal Normal Normal 35px Palanquin, sans-serif;
+        font-weight: bold;
+        line-height: 1.5em;
+    }
+    .font_5 {
+        font: Normal Normal Normal 20px Gudea, sans-serif;
+        font-weight: normal;
+        line-height: 1.8em;
+        letter-spacing: 0em;
+    }
+    .font_4 {
+        font-family: Gudea, sans-serif;
+    }
+}
+
