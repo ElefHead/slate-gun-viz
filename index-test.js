@@ -192,8 +192,6 @@ function populateGrid(data, all=true) {
         $('#female-total').text(counts['F']['total']);
         $('#male-total').text(counts['M']['total']);
 
-        console.log(counts);
-
         if (all === false){
             classVal = 'grid-items';
         }else{
@@ -213,9 +211,6 @@ function populateGrid(data, all=true) {
             })
             .attr('target', '_blank')
             .append('circle')
-            .on('click', (d) => {
-                console.log(d)
-            })
             .attr('r', gridRadius)
             .attr('cx', (d, i) => {
                 const n = i % numPerRow;
