@@ -151,6 +151,49 @@ function populateGrid(data, all=true) {
 
         let classVal;
 
+        let counts = {
+            'F': {
+                'total': 0,
+                '1': 0,
+                '2': 0,
+                '3': 0,
+                'Unknown': 0
+            },
+            'M': {
+                'total': 0,
+                '1': 0,
+                '2': 0,
+                '3': 0,
+                'Unknown': 0
+            },
+            'Unknown': {
+                'total': 0,
+                '1': 0,
+                '2': 0,
+                '3': 0,
+                'Unknown': 0
+            },
+        };
+        // console.log(data);
+        data.map(function (d) {
+            let {gender, ageGroup} = d;
+            counts[gender]['total'] += 1;
+            counts[gender][ageGroup] += 1;
+        });
+
+        $('#female-child').text(counts['F']['1']);
+        $('#female-teen').text(counts['F']['2']);
+        $('#female-adult').text(counts['F']['3']);
+
+        $('#male-child').text(counts['M']['1']);
+        $('#male-teen').text(counts['M']['2']);
+        $('#male-adult').text(counts['M']['3']);
+
+        $('#female-total').text(counts['F']['total']);
+        $('#male-total').text(counts['M']['total']);
+
+        console.log(counts);
+
         if (all === false){
             classVal = 'grid-items';
         }else{
@@ -527,12 +570,18 @@ function clicked(d) {
             .force("link", d3.forceLink().id(function(d) {
                 return d.id;
             }))
-            .force("gravity", d3.forceManyBody().strength(0.01).distanceMax(200).distanceMin(2))
+            .force("gravity", d3.forceManyBody().strength(0.01).distanceMax(1000).distanceMin(2))
             .force('cluster', d3.forceCluster)
+            .force('forcex', d3.forceX(function(d){
+                return d['x'];
+            }).strength(0.2))
+            .force('forcey', d3.forceY(function(d){
+                return d['y'];
+            }).strength(0.3))
             .force('colision', d3.forceCollide().radius(function(d) {
                 let {count} = d;
                 return radius(count)*7;
-            }).strength(0.1));
+            }).strength(0.2));
 
         simulation
             .nodes(cityDeaths)
@@ -627,6 +676,17 @@ function reset() {
         simulation.stop();
     d3.selectAll('span.location-text')
         .text('USA');
+
+    $('#female-child').text(77);
+    $('#female-teen').text(69);
+    $('#female-adult').text(1676);
+
+    $('#male-child').text(155);
+    $('#male-teen').text(503);
+    $('#male-adult').text(9310);
+
+    $('#female-total').text(1850);
+    $('#male-total').text(10153);
 
     svg.selectAll('g.bubble')
         .selectAll('circle')

@@ -34,7 +34,7 @@ html, body {
 }
 
 .margin-top {
-    margin-top: 10%;
+    margin-top: 4%;
 }
 
 .darkblue {
@@ -61,6 +61,30 @@ html, body {
     height: 100px;
 }
 
+#female-child {
+    color: #FAC1C0;
+}
+
+#female-teen {
+    color: #F69394;
+}
+
+#female-adult {
+    color: #F25E60;
+}
+
+#male-child {
+    color: #8EBADA;
+}
+
+#male-teen {
+    color: #3D8BBA;
+}
+
+#male-adult {
+    color: #005394;
+}
+
 .font_0{
     font: Normal Normal Normal 50px/1.4em Palanquin, sans-serif;
     font-weight: bold;
@@ -74,7 +98,7 @@ html, body {
 }
 
 .font_4 {
-    font: 23px Gudea, sans-serif;
+    font: 20px Gudea, sans-serif;
 }
 
 .label-div {

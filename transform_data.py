@@ -194,6 +194,21 @@ def get_city_victims(data):
 def get_victims_list(data):
 	victims = {}
 
+	counts = {
+		'M': {
+			'1.0':0,
+			'2.0':0,
+			'3.0':0,
+			'total': 0,
+		},
+		'F': {
+			'1.0':0,
+			'2.0':0,
+			'3.0':0,
+			'total': 0
+		}
+	}
+
 	for i in range(data.shape[0]):
 		state_name = get_state_name(data['state'][i].upper())
 
@@ -217,7 +232,14 @@ def get_victims_list(data):
 			'gender': str(gender) if type(gender) is not type(1.0) else 'Unknown'
 		}
 
-	return victims
+		if str(gender) in counts:
+			counts[gender]['total']+=1
+			if str(ageGroup) in counts[gender]:
+				counts[str(gender)][str(ageGroup)] += 1
+
+	print(counts)
+
+	# return victims
 
 
 def get_state_name(name):
@@ -230,11 +252,11 @@ if __name__ == '__main__':
 	print(slate_gun_deaths.shape)
 	# print(state_json['objects']['collection']['geometries'][:5])
 
-	state_counts = get_state_counts(slate_gun_deaths)
-	city_counts = get_city_counts(slate_gun_deaths)
-	city_victims = get_city_victims(slate_gun_deaths)
-	victims = get_victims_list(slate_gun_deaths)
-	write_json(state_counts, loc='data', filename='stateCounts.json')
-	write_json(city_counts, loc='data', filename='cityCounts.json')
-	write_json(city_victims, loc='data', filename='cityVictims.json')
-	write_json(victims, loc='data', filename='victimsList.json')
+	# state_counts = get_state_counts(slate_gun_deaths)
+	# city_counts = get_city_counts(slate_gun_deaths)
+	# city_victims = get_city_victims(slate_gun_deaths)
+	get_victims_list(slate_gun_deaths)
+	# write_json(state_counts, loc='data', filename='stateCounts.json')
+	# write_json(city_counts, loc='data', filename='cityCounts.json')
+	# write_json(city_victims, loc='data', filename='cityVictims.json')
+	# write_json(victims, loc='data', filename='victimsList.json')
