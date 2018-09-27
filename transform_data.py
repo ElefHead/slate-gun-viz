@@ -239,7 +239,7 @@ def get_victims_list(data):
 
 	print(counts)
 
-	# return victims
+	return victims
 
 
 def get_state_name(name):
@@ -252,11 +252,11 @@ if __name__ == '__main__':
 	print(slate_gun_deaths.shape)
 	# print(state_json['objects']['collection']['geometries'][:5])
 
-	# state_counts = get_state_counts(slate_gun_deaths)
-	# city_counts = get_city_counts(slate_gun_deaths)
-	# city_victims = get_city_victims(slate_gun_deaths)
-	get_victims_list(slate_gun_deaths)
-	# write_json(state_counts, loc='data', filename='stateCounts.json')
-	# write_json(city_counts, loc='data', filename='cityCounts.json')
-	# write_json(city_victims, loc='data', filename='cityVictims.json')
-	# write_json(victims, loc='data', filename='victimsList.json')
+	state_counts = get_state_counts(slate_gun_deaths)
+	city_counts = get_city_counts(slate_gun_deaths)
+	city_victims = get_city_victims(slate_gun_deaths)
+	victims = get_victims_list(slate_gun_deaths)
+	write_json(state_counts, loc='data', filename='stateCounts.json')
+	write_json(city_counts, loc='data', filename='cityCounts.json')
+	write_json(city_victims, loc='data', filename='cityVictims.json')
+	write_json(victims, loc='data', filename='victimsList.json')

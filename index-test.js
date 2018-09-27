@@ -347,22 +347,22 @@ function gradient(canvas, limit0, iter) {
 
     grad.append('svg:stop')
         .attr('offset', '0%')
-        .attr('stop-color', 'pink')
+        .attr('stop-color', 'red')
         .attr('stop-opacity', 1);
 
     grad.append('svg:stop')
         .attr('offset', limit0+'%')
-        .attr('stop-color', 'pink')
+        .attr('stop-color', 'red')
         .attr('stop-opacity', 1);
 
     grad.append('svg:stop')
         .attr('offset', limit0+'%')
-        .attr('stop-color', 'darkblue')
+        .attr('stop-color', '#1E90FF')
         .attr('stop-opacity', 1);
 
     grad.append('svg:stop')
         .attr('offset', '100%')
-        .attr('stop-color', 'darkblue')
+        .attr('stop-color', '#1E90FF')
         .attr('stop-opacity', 1);
 }
 
@@ -500,11 +500,11 @@ function clicked(d) {
             .attr('fill', function (d, i) {
                 let {genderMale, genderFemale} = d;
                 if (genderMale === 0)
-                    return 'pink';
-                else if (genderFemale === 0)
-                    return 'darkblue';
-                else if (genderMale === 0 && genderFemale === 0)
                     return 'red';
+                else if (genderFemale === 0)
+                    return '#1E90FF';
+                else if (genderMale === 0 && genderFemale === 0)
+                    return 'black';
                 else {
                     let limit = genderFemale * 100/ (genderFemale + genderMale);
                     gradient(gradient_g, limit, i);
